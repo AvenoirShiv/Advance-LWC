@@ -1,0 +1,13 @@
+<aura:component controller = "AccountController" >
+    <aura:method name = "showMessage" action = "{!v.showMessage}" >
+        <aura:attribute name ="message" type = "String" />
+    </aura:method>
+    <aura:attribute name = "childVariable" type = "String" />
+    <aura:handler name = "init" value ="{!this}" action = "{!c.doInit}"/>
+    <aura:attribute name = "username" type = "String" />
+    <p>This is child component</p>
+    <H1>This is variable from Child Component {!v.childVariable}</H1>
+    <lightning:input label = "Enter your name" type = "text" value = "{!v.username}" placeholder = "Enter Your Name" >
+    </lightning:input>
+    <lightning:button label = "Submit" onclick = "{!c.sendData}"/>
+</aura:component>

@@ -1,0 +1,24 @@
+<aura:component controller = "AccountController" >
+    <aura:attribute name ="accountList" type ="List"/>
+    <aura:attribute name = "columns" type = "Object" />
+    <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}" />
+    <!--<lightning:datatable
+                         keyField ="Id"
+                         data = "{!v.accountList}"
+                         columns = "{!v.columns}"
+                         hideCheckboxColumn = "true"
+                         >
+    </lightning:datatable>-->
+    <lightning:recordForm 
+                          objectApiName = "Account"
+                          layoutType = "Full"
+                          columns = "2"
+                          >
+    </lightning:recordForm>
+    <!--<h1>This is list of Account</h1>
+    <aura:iteration items = "{!v.accountList}" var ="account" >
+        <p>Account Id : {!account.Id}</p>
+        <br></br>
+        <p>Account Name : {!account.Name}</p>
+    </aura:iteration> -->
+</aura:component>

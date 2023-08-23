@@ -1,0 +1,7 @@
+<aura:component>
+<aura:method name="greetingMethod" action="{!c.getMessage}" access="public">
+	<aura:attribute name="GreetingParam" type="String" default="Hello"/> 
+	<aura:attribute name="PersonNameParam" type="String" default="John"/> 
+</aura:method>
+<c:childComponent1 parent="{!this}"></c:childComponent1>
+</aura:component>

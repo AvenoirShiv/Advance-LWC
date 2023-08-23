@@ -1,0 +1,113 @@
+<template>
+    <lightning-card title="Field Creator">
+        <div class="slds-p-horizontal_medium slds-p-vertical_medium">
+            <div class="slds-grid">
+                <div class="slds-col">
+                    <lightning-combobox label="Select Object" value={selectObjects} options={SObjectList}
+                        onchange={handleSelectObjectChange} required={isRequired} ></lightning-combobox>
+                </div>
+            </div>
+            <template for:each={allData} for:item="data" for:index="index">
+                <div key={data.field.id}>
+                    <template if:true={isObjectSelected}>
+                        <!-- <hr class="slds-p-top_xxx-small">
+                        <div class="slds-text-align_center">
+                            <h1>{index}</h1>
+                        </div>
+                        <hr class="slds-p-top_xxx-small"> -->
+                        <div class="slds-grid slds-gutters_small">
+                            <div class="slds-col slds-side_6-of-12">
+                                <lightning-input label="Field Label" value={data.field.label} onchange={handleLabelChange}
+                                    data-index={index} required={isRequired}></lightning-input>
+                                    <span if:true={data.isErrorFound} style="font-size: 10px;padding-left: 10px;color: red;">{errorMessage}</span>
+                            </div>
+                            <div class="slds-col slds-side_6-of-12">
+                                <lightning-input label="Field API Name" value={data.field.apiName}
+                                    onchange={handleAPINameChange} data-index={index} required={isRequired} readonly={isRequired}></lightning-input>
+                            </div>
+                        </div>
+                        <div class="slds-grid">
+                            <div class="slds-col slds-side_12-of-12">
+                                <lightning-combobox label="Field Type" value={data.field.type} options={fieldTypeOptions}
+                                    onchange={handleTypeChange} data-index={index} required={isRequired}></lightning-combobox>
+                            </div>
+                        </div>
+                    </template>
+                    <template if:true={data.componentType.isTextComponent}>
+                        <lightning-input label="Text Length (1-255)" type="number" value={data.field.textLength}
+                            onchange={handleTextLengthChange} data-index={index} min = "1" max = "255" required={isRequired}></lightning-input>
+                    </template>
+                    <template if:true={data.componentType.isLongTextAreaComponent}>
+                        <div class="slds-grid slds-gutters_small">
+                            <div class="slds-col slds-side_6-of-12">
+                                <lightning-input label="Text Length (255-131072)" type="number" value={data.field.textLength}
+                                onchange={handleTextLengthChange} data-index={index} min = "255" max = "131072" required={isRequired}></lightning-input>
+                            </div>
+                            <div class="slds-col slds-side_6-of-12">
+                                <lightning-input label="Visible Lines (2-99)" type="number" value={data.field.visibleLines}
+                                onchange={handlevisibleLinesChange} data-index={index} min = "2" max = "99" required={isRequired}></lightning-input>
+                                <span if:true={data.isErrorFound} style="font-size: 10px;padding-left: 10px;color: red;">{errorMessage}</span>
+                            </div>
+                        </div>
+                    </template>
+                    <template if:true={data.componentType.isNumberComponent}>
+                        <div class="slds-grid slds-gutters_small">
+                            <div class="slds-col slds-side_6-of-12">
+                                <lightning-input label="Number Length (1-18)" type="number" value={data.field.textLength}
+                                onchange={handleTextLengthChange} data-index={index} min = "1" max = "18" required={isRequired}></lightning-input>
+                            </div>
+                            <div class="slds-col slds-side_6-of-12">
+                                <lightning-input label="Decimal Places" type="number" value={data.field.scale}
+                                onchange={handleScaleChange} data-index={index} min = "0" max = {scaleMaxValue} required={isRequired}></lightning-input>
+                            </div>
+                        </div>
+                    </template>
+                    <template if:true={data.componentType.isCheckboxComponent}>
+                        <lightning-combobox label="Defaul Value" value={data.field.defaultvalue} options={checkBoxDefaulOption}
+                                    onchange={handleCheckBoxDefaultChange} data-index={index}></lightning-combobox>
+                    </template>
+                    <template if:true={data.componentType.isLookupComponent}>
+                        <div class="slds-grid slds-gutters_small">
+                            <div class="slds-col slds-side_6-of-12">
+                                <lightning-input label="Relationship Label" value={data.field.relationshipLabel} onchange={handleRelationshipLabelChange}
+                                    data-index={index} required={isRequired}></lightning-input>
+                            </div>
+                            <div class="slds-col slds-side_6-of-12">
+                                <lightning-input label="Relationship Name" value={data.field.relationshipName}
+                                    onchange={handleRelationshipNameChange} data-index={index} required={isRequired}></lightning-input>
+                            </div>
+                        </div>
+                        <div class="slds-grid">
+                            <div class="slds-col slds-side_12-of-12">
+                                <lightning-combobox label="Releted To" value={data.field.referenceTo} options={referenceObjectList}
+                                    onchange={handleReferenceToChange} data-index={index} required={isRequired}></lightning-combobox>
+                            </div>
+                        </div>
+                    </template>
+                    <template if:true={data.componentType.isMasterDetailComponent}>
+                        <div class="slds-grid slds-gutters_small">
+                            <div class="slds-col slds-side_6-of-12">
+                                <lightning-input label="Relationship Label" value={data.field.relationshipLabel} onchange={handleRelationshipLabelChange}
+                                    data-index={index} required={isRequired}></lightning-input>
+                            </div>
+                            <div class="slds-col slds-side_6-of-12">
+                                <lightning-input label="Relationship Name" value={data.field.relationshipName}
+                                    onchange={handleRelationshipNameChange} data-index={index} required={isRequired}></lightning-input>
+                            </div>
+                        </div>
+                        <div class="slds-grid">
+                            <div class="slds-col slds-side_12-of-12">
+                                <lightning-combobox label="Releted To" value={data.field.referenceTo} options={referenceObjectList}
+                                    onchange={handleReferenceToChange} data-index={index} required={isRequired}></lightning-combobox>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </template>
+            <div class="slds-p-top_small">
+                <lightning-button class= "slds-p-around_small" label="Add Field" variant="brand" onclick={addField}></lightning-button>
+                <lightning-button class= "slds-p-around_small" label="Create Fields" variant="brand" onclick={createFields}></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

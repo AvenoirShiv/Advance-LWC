@@ -1,0 +1,6 @@
+<aura:component >
+    <aura:registerEvent name="custEvent" type = "c:customEvent" />
+    <aura:attribute name = "message" type ="String" />
+    <ui:inputText label = "Input your message" value = "{!v.message}"/>
+    <ui:button label ="Fire Event" press="{!c.fireComponentEvent}"/>
+</aura:component>

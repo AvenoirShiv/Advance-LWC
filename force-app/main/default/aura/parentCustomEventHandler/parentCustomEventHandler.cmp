@@ -1,0 +1,13 @@
+<aura:component >
+    <aura:attribute name = "MessageFromNotifer" type = "String"/>
+    <aura:attribute name = "counter" type="Integer" default = "0" />
+    <aura:handler name ="custEvent" event = "c:customEvent" action = "{!c.handleEvent}" />
+    <c:childCustomEventHandler/>
+    <p>
+        This is message from Custom Event {!v.MessageFromNotifer}
+        <br>
+        </br>
+        Counter : {!v.counter}
+    </p>
+	
+</aura:component>

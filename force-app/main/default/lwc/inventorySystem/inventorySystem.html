@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="Inventory System">
+        <table>
+            <tbody>
+                <template if:true={datafound}>
+                    <template for:each={data} for:item="item" for:index="index">
+                    <tr key = {item.itemName}>
+                        <td class="slds-p-around_small"><lightning-input data-index={index} label="Item Name"></lightning-input></td>
+                        <td class="slds-p-around_small" onchange= {handleRateChange} data-index={index} ><lightning-input label="Rate"></lightning-input></td>
+                        <td class="slds-p-around_small" ><lightning-input label="Rate with 5%" data-index={index}></lightning-input></td>
+                        <td class="slds-p-around_small"><lightning-input onchange= {handleQuantityChange} label="Quantity" data-index={index}></lightning-input></td>
+                        <td class="slds-p-around_small"><lightning-input label="Total" data-index={index}></lightning-input></td>
+                        <td class="slds-p-around_small"><lightning-icon class="slds-p-top_medium" style="cursor: pointer;" variant="brand"
+                            icon-name="utility:new"  onclick={handleAddRow} data-index={index}
+                            ></lightning-icon></td>
+                    </tr>
+                </template>
+            </template>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="slds-p-around_small"><lightning-input label="Total"></lightning-input></td>
+                </tr>
+            </tbody>
+        </table>
+        <hr/>
+    </lightning-card>
+</template>

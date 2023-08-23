@@ -1,0 +1,8 @@
+<aura:component >
+    <aura:attribute name= "variable1" type = "String" default="This is default Value"/>
+	<p>This is First Application</p>
+    <h1>This is value for Variable1 {!v.variable1}</h1>
+    <hr></hr>
+    <c:ChildComponent childVariable = "This value is passed by parent component" aura:id = "childcomp" ></c:ChildComponent>
+    <lightning:button label = "ClickMe" onclick = "{!c.chickHandle}" ></lightning:button>
+</aura:component>

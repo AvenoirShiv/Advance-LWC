@@ -1,0 +1,12 @@
+<aura:component >
+    <h1>This is Child Components</h1>
+    <aura:attribute name = "parentAction" type= "Aura.Action"/>
+    <aura:attribute name = "valueForParent" type = "String" default = "This is form Child"/>
+    <aura:method name ="showMethod" action = "{!c.showMethod}" >
+        <aura:attribute name = "message" type = "String"/>
+    </aura:method>
+    <br>
+    </br>
+    <h1>Calling ParentMethod from Child</h1>
+    <ui:button label = "Call Patent Method" press="{!v.parentAction}"/>
+</aura:component>

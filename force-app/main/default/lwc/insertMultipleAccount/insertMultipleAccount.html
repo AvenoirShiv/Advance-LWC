@@ -1,0 +1,49 @@
+<template>
+    <lightning-card title="Search account">
+        <div class="slds-p-left_x-small slds-p-right_x-small">
+            <div onkeyup={handleSearch} onfocus={handleSearch} onclick={handleSearch}>
+                <lightning-input name="enter-search" label="Search Account" type="search"></lightning-input>
+            </div>
+        </div>
+        <template if:true={selectedRecordPresent}>
+            <div class = 'new'>
+                <ul>
+                <template for:each={selectedRecords} for:item="record">
+                    <li key ={record.recordId}>
+                        <figure>
+                            <!-- <img src="/media/cc0-images/elephant-660-480.jpg"
+                            alt="Elephant at sunset"> -->
+                            <figcaption><a href= {record.recordURl} target="_blank" >{record.recordId}</a></figcaption>
+                        </figure>
+                    </li>
+                </template>
+                </ul>
+            </div>
+            <!-- <ul style="display:flex;">
+                <template for:each={selectedRecords} for:item="record">
+                    <div key={record} class="slds-p-left_x-small slds-p-right_x-small">
+                        <li> <a href="#">test</a></li>
+                    </div>
+                </template>
+            </ul> -->
+        </template>
+        <template if:true={recordFound}>
+            <div class="slds-scrollable" style="height:auto; max-height:15rem;">
+                <lightning-checkbox-group class="slds-p-left_x-small slds-p-right_x-small" name="Search Results"
+                    label="Search Results" options={option} value={selectedOption} onchange={handleChange}>
+                </lightning-checkbox-group>
+            </div>
+            <div class="slds-m-top_small slds-m-bottom_medium slds-p-left_x-small slds-p-right_x-small ">
+                <!-- Success variant: Identifies a successful action -->
+                <lightning-button variant="success" label={addSelected} title="Successful action"
+                    onclick={handleAddSelected} class="slds-m-left_x-small"></lightning-button>
+                <!-- Destructive variant: Identifies a potentially negative action -->
+                <lightning-button variant="destructive" label="Clear" title="Destructive action" onclick={handleClear}
+                    class="slds-m-left_x-small"></lightning-button>
+            </div>
+        </template>
+        <template if:false={recordFound}>
+            <p class="slds-p-left_x-small slds-p-right_x-small">No Record found</p>
+        </template>
+    </lightning-card>
+</template>

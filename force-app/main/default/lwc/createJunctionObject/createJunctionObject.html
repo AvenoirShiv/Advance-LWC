@@ -1,0 +1,36 @@
+<template>
+    <lightning-card title="Junction Object Creation and Mapping" icon-name="standard:record">
+        <div class="slds-p-around_medium">
+            <div class = "demo-only demo-only--sizing slds-grid slds-wrap">
+                <div class="slds-size_12-of-12">
+                    <lightning-input label="Object Name" value={junctionObjectName} onchange={handleObjectNameChange}></lightning-input>
+                </div>
+                <br>
+                <div class="slds-size_5-of-12">
+                    <lightning-input label="Target Field Api Name" value={targetObjectAPIName} onchange={handleTargetObjectAPINameChange}></lightning-input>
+                </div>
+                <div class="slds-size_2-of-12">
+                   
+                </div>
+                <div class="slds-size_5-of-12">
+                    <lightning-combobox label="Target Object Name" options={targetObjectOptions} value={targetObjectName} onchange={handleTargetObjectNameChange}></lightning-combobox>
+                </div>
+                <div class="slds-size_5-of-12">
+                    <lightning-input label="Catalog Field Api Name" value={catalogObjectAPIName} onchange={handleCatalogObjectAPINameChange}></lightning-input>
+                </div>
+                <div class="slds-size_2-of-12">
+                   
+                </div>
+                <div class="slds-size_5-of-12">
+                    <lightning-combobox label="Catalog Object Name" options={catalogObjectOptions} value={catalogObjectName} onchange={handleCatalogObjectNameChange}></lightning-combobox>
+                </div>
+                <div class="slds-size_12-of-12 ">
+                    <lightning-input label="Tag Setting Id" value={tagSettingId} onchange={handleTagSettingIdChange}></lightning-input>
+                </div>
+            </div>
+            <div class="slds-m-top_medium">
+                <lightning-button variant="brand" label="Submit" onclick={handleSubmit}></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

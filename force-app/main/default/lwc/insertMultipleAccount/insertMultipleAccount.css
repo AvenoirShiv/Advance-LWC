@@ -1,0 +1,26 @@
+.new {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  ul:after { /* to clearfix your ul list */
+    content: "";
+    display: table;
+    clear: both;
+  }
+  li {
+    display: block; /* inline-block have an extra 4px margin wich makes it harder to use in this situation */
+    width: auto; /* You get it (100/3) but use exact number */
+    padding: 5px 5px;
+    float: left; /* if you use block elements you have to float them */
+    text-align: center;
+  }
+  figure {
+    margin: 0; /* to normalize figure element */
+  }

@@ -1,0 +1,36 @@
+<apex:page controller="exampleCon" id="controller">
+    <apex:form id="formid" > 
+        <apex:pageblock id="pageBlock">
+        	<apex:pageBlockSection id="input">
+                <apex:inputText value="{!NewAccount.Name}" id="name" />
+                <apex:inputText value="{!NewAccount.phone}" id="phone"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:outputPanel onclick="callJavaScriptFunction();" styleClass="btn"> 
+        			Insert Account
+    			</apex:outputPanel>
+            </apex:pageBlockButtons>
+        </apex:pageblock>
+   <script>
+    function callJavaScriptFunction(){
+        var name = document.getElementById('controller:formid:pageBlock:input:name').value;
+        var phone = document.getElementById('controller:formid:pageBlock:input:name').value;
+        console.log('name' + name);
+        if(name == ""){
+            alert("Name can't be null");
+        }
+        else if(phone =="") {
+            alert("Phone can't be null");
+        }
+        else{
+            console.log('running');
+            callContollerMethod(name,phone);
+        }
+    }
+    </script>
+    	<apex:actionFunction name="callContollerMethod" action="{!calledFromVFPage}" rerender="">
+         	<apex:param name="name" value="" />
+            <apex:param name="phone" value="" />
+        </apex:actionFunction>
+    </apex:form>
+</apex:page>

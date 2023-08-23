@@ -1,0 +1,10 @@
+<aura:component >
+    <c:childCompent aura:id = "childcomp"/>
+    <aura:attribute name = "ValueInParent" type = "String" default = "this is from parent component" />
+    <h1>Calling Child Method From Parent</h1>
+    <lightning:button label = "Call Child Method" onclick= "{!c.callChildMethod}" ></lightning:button>
+    <c:childCompent aura:id ="child" parentAction = "{!c.handleParentAction}"/>
+    <p>
+        this is the value : {!v.ValueInParent}
+    </p>
+</aura:component>
